@@ -1,0 +1,201 @@
+================================================================================
+                    STRIPE PAYOUT RECONCILIATION ANALYSIS
+                       2024-01-01 to 2025-10-17
+================================================================================
+
+EXECUTIVE SUMMARY
+================================================================================
+
+Total Transactions:         16,196
+Date Range:                 Dec 2023 - Oct 2025 (22 months)
+Total Gross Revenue:        $4,205,519.87
+Total Stripe Fees:          $129,093.42
+Total Net Revenue:          $4,076,426.45
+
+Average Transaction:        $259.66
+Median Transaction:         $229.00
+Average Fee Rate:           3.07%
+
+
+FINANCIAL BREAKDOWN
+================================================================================
+
+By Category:
+  charge                    $4,406,706.62  (15,086 transactions)
+  refund                     -$197,821.75   (1,089 transactions)
+  dispute                      -$1,341.00      (9 transactions)
+  dispute_reversal                $447.00      (3 transactions)
+  refund_failure                  $290.00      (2 transactions)
+  charge_failure              -$2,761.00      (5 transactions)
+  other_adjustment                  $0.00      (2 transactions)
+
+
+PAYMENT METHODS
+================================================================================
+
+  card                      15,854 transactions (97.9%)
+  ach_debit                    318 transactions  (2.0%)
+  link                          15 transactions  (0.1%)
+  us_bank_account                7 transactions  (0.0%)
+
+
+CARD BRANDS (for card payments)
+================================================================================
+
+  Visa                       9,287 transactions (57.3%)
+  American Express           3,717 transactions (23.0%)
+  MasterCard                 2,751 transactions (17.0%)
+  Discover                      99 transactions  (0.6%)
+
+
+TOP 10 CUSTOMERS BY REVENUE
+================================================================================
+
+1.  Amanda Cohen                $116,841.00  (381 transactions)
+2.  Zayba Hoda                  $106,723.50  (220 transactions)
+3.  Nancy Beliveau               $81,904.00  (495 transactions)
+4.  Sean Tracy                   $73,034.00  (515 transactions)
+5.  Chris Punzalan               $71,369.00  (364 transactions)
+6.  Tabitha Zappone              $69,372.00  (133 transactions)
+7.  Lindsey Gaede                $68,246.00  (454 transactions)
+8.  Dawn Armstrong               $64,720.00  (358 transactions)
+9.  Kimberly Gaiser              $60,908.00  (363 transactions)
+10. Kelly Eyer                   $60,609.00  (116 transactions)
+
+
+TOP 10 PROGRAMS BY TRANSACTION COUNT
+================================================================================
+
+1.  6 Month Program (ID: 1)                4,952 transactions
+2.  4 Month Program (ID: 21)               2,908 transactions
+3.  3 Month Program (ID: 32)               2,406 transactions
+4.  60 Day Program (ID: 36)                1,225 transactions
+5.  6 Month AIP Program (ID: 24)             442 transactions
+6.  4 Month AIP Program (ID: 29)             390 transactions
+7.  6 Month Mind Body Program (ID: 133)      271 transactions
+8.  3 Month AIP Program (ID: 33)             166 transactions
+9.  30 Day Program (ID: 40)                  156 transactions
+10. 60 Day AIP Program (ID: 39)              149 transactions
+
+
+MONTHLY REVENUE PERFORMANCE
+================================================================================
+
+2023-12:  $9,274.00       (23 transactions)
+
+2024-01:  $182,914.00     (841 transactions)
+2024-02:  $174,391.50     (746 transactions)
+2024-03:  $167,232.00     (739 transactions)
+2024-04:  $182,574.50     (789 transactions)
+2024-05:  $197,140.50     (880 transactions)
+2024-06:  $192,539.50     (763 transactions)
+2024-07:  $198,285.00     (741 transactions)
+2024-08:  $211,372.50     (817 transactions)
+2024-09:  $210,247.59     (768 transactions)
+2024-10:  $226,765.26     (778 transactions)
+2024-11:  $150,567.93     (582 transactions)
+2024-12:  $148,680.26     (584 transactions)
+
+2025-01:  $217,427.84     (791 transactions)
+2025-02:  $164,224.67     (678 transactions)
+2025-03:  $193,154.84     (745 transactions)
+2025-04:  $200,570.34     (753 transactions)
+2025-05:  $207,392.01     (761 transactions)
+2025-06:  $188,249.84     (714 transactions)
+2025-07:  $214,003.18     (777 transactions)
+2025-08:  $247,313.43     (794 transactions)  ⭐ PEAK MONTH
+2025-09:  $211,617.01     (733 transactions)
+2025-10:  $109,582.17     (399 transactions)  (Partial month)
+
+Average Monthly Revenue (2024-2025): $192,328
+
+
+TRANSACTION TIMING PATTERNS
+================================================================================
+
+By Day of Week (Top 3):
+  1. Thursday      - Most transactions
+  2. Tuesday       - 2nd most
+  3. Wednesday     - 3rd most
+
+Peak Hours (UTC):
+  Most activity between 13:00-20:00 UTC
+  (Corresponds to business hours in US timezones)
+
+
+FEE ANALYSIS
+================================================================================
+
+Average Fee Rate:           3.07%
+Median Fee Rate:            3.10%
+Total Fees Paid:            $129,093.42
+
+The fee rate is consistent across most transactions, typical for
+standard Stripe processing fees (2.9% + $0.30 per transaction).
+
+
+GROWTH INSIGHTS
+================================================================================
+
+Revenue Trends:
+  - Strong growth from Q1 2024 through Q3 2024
+  - Peak achieved in August 2025 ($247,313)
+  - Average ~$200K/month in 2025
+  - Seasonal dip in Nov-Dec 2024
+
+Customer Concentration:
+  - Top 10 customers represent significant revenue
+  - Good distribution across multiple programs
+  - Healthy mix of transaction sizes
+
+
+VISUALIZATIONS GENERATED
+================================================================================
+
+All charts have been saved as high-resolution PNG files in outputs/charts/:
+
+  01_monthly_revenue_trend.png    - Revenue over time with fees
+  02_revenue_by_category.png      - Breakdown by transaction type
+  03_top_customers.png            - Top 15 customers ranked
+  04_top_programs.png             - Program revenue distribution
+  05_payment_methods.png          - Payment method breakdown
+  06_card_brands.png              - Card brand usage
+  07_day_of_week.png              - Weekly patterns
+  08_hour_of_day.png              - Daily timing patterns
+  09_fee_distribution.png         - Fee percentage analysis
+  10_growth_analysis.png          - Month-over-month growth
+
+
+RECOMMENDATIONS
+================================================================================
+
+1. Customer Retention:
+   - Focus on top 10 customers who drive significant revenue
+   - Implement loyalty programs for high-value customers
+
+2. Program Optimization:
+   - 6 Month Program is the clear winner (4,952 transactions)
+   - Consider expanding successful program formats
+
+3. Payment Methods:
+   - Card payments dominate (97.9%)
+   - Consider promoting ACH for larger transactions (lower fees)
+
+4. Timing:
+   - Peak activity Thu-Wed
+   - Focus marketing/support during UTC business hours
+
+5. Growth Strategy:
+   - Build on August 2025 peak momentum
+   - Address Nov-Dec seasonal dip with promotions
+   - Target $250K+ monthly revenue consistently
+
+
+================================================================================
+                        END OF ANALYSIS REPORT
+================================================================================
+
+Generated: October 26, 2025
+Report covers: December 2023 - October 2025
+Data source: Stripe Payout Reconciliation Export
+Total records analyzed: 16,196 transactions
