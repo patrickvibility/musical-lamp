@@ -1,0 +1,26 @@
+# Stripe API
+stripe>=5.0.0
+
+# Data Analysis
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+plotly>=5.14.0
+
+# Jupyter
+jupyter>=1.0.0
+ipykernel>=6.22.0
+ipywidgets>=8.0.0
+
+# Data Export
+openpyxl>=3.1.0
+xlsxwriter>=3.1.0
+
+# Environment Variables
+python-dotenv>=1.0.0
+
+# Database (optional)
+sqlalchemy>=2.0.0
