@@ -17,6 +17,12 @@ This document provides comprehensive research into the best Claude code framewor
 7. [MCP (Model Context Protocol)](#mcp-model-context-protocol)
 8. [Skills, Hooks & Extensibility](#skills-hooks--extensibility)
 9. [Frameworks & Tools](#frameworks--tools)
+   - [Ralph Wiggum Loops](#ralph-wiggum-loops-autonomous-iteration)
+   - [GSD (Get Shit Done)](#gsd-get-shit-done-framework)
+   - [ContextKit](#contextkit-4-phase-planning)
+   - [Superpowers](#superpowers-skills-library)
+   - [Spec-Driven Development](#spec-driven-development-frameworks)
+   - [Awesome Claude Code Resources](#awesome-claude-code-resources)
 10. [Security Best Practices](#security-best-practices)
 
 ---
@@ -448,33 +454,202 @@ Distributed via marketplace as cohesive units.
 
 ## Frameworks & Tools
 
-### ContextKit
+### Ralph Wiggum Loops (Autonomous Iteration)
 
-Systematic development framework:
-- 4-phase planning methodology
-- Specialized quality agents
-- Structured workflows
-- Production-ready code on first try
+Named after The Simpsons character, the Ralph Wiggum technique enables **continuous autonomous development cycles** through persistent iteration.
 
-### Ralph for Claude Code
+**How It Works:**
+1. Invoke `/ralph-loop` with a prompt (e.g., "Migrate all tests from Jest to Vitest")
+2. Set max iterations and completion criteria
+3. When Claude thinks it's done, the Stop hook intercepts the exit
+4. Re-feeds the original prompt; Claude continues with modified files and git history
+5. Loop continues until completion criteria met or iterations exhausted
 
-Autonomous AI development framework:
-- Iterative work until completion
+**Core Philosophy:**
+- Don't aim for perfect on first try—let the loop refine the work
+- "Deterministically bad" = failures are predictable and informative
+- Success depends on writing good prompts, not just having a good model
+- Keep trying until success; loop handles retry logic automatically
+
+**Use Cases:**
+- Test migrations (Jest to Vitest)
+- Increasing test coverage
+- Fixing lint errors across codebase
+- Code refactoring
+- Any task: "look at repo, improve something, report findings"
+
+**Key Features:**
 - Intelligent exit detection
-- Rate limiting & circuit breakers
-- Safety guardrails against infinite loops
+- Dual-condition exit gate (completion indicators AND explicit EXIT_SIGNAL)
+- Rate limiting with hourly reset (100 calls/hour, configurable)
+- Circuit breaker patterns
 
-### awesome-claude-code
+**Cost Warning:** Autonomous loops burn tokens. A 50-iteration loop on a large codebase can cost **$50-100+** in API credits. Set `--max-iterations` conservatively.
 
-Curated list of:
-- Skills
-- Hooks
-- Slash commands
-- Agent orchestrators
-- Applications
-- Plugins
+**Installation:**
+```bash
+/plugin install ralph-wiggum@claude-plugins-official
+```
 
-**GitHub:** [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code)
+**GitHub:** [frankbria/ralph-claude-code](https://github.com/frankbria/ralph-claude-code) | [Official Plugin](https://github.com/anthropics/claude-code/tree/main/plugins/ralph-wiggum)
+
+---
+
+### GSD (Get Shit Done) Framework
+
+A **meta-prompting, context engineering, and spec-driven development system** for Claude Code, optimized for solo developers who want output that holds up.
+
+**Why GSD Exists:**
+Other spec-driven tools (BMAD, Speckit) make things complicated with sprint ceremonies, story points, stakeholder syncs, retrospectives, and Jira workflows. GSD puts the complexity in the system, not your workflow.
+
+**Key Features:**
+- **Roadmaps → Concrete Tasks**: With measurable success criteria
+- **Fresh Context Per Task**: Each atomic task runs in clean subagent context to fight context rot
+- **Maximum 3 Tasks Per Plan**: Each plan runs in fresh subagent (200k tokens purely for implementation)
+- **Atomic Git Commits**: Each task gets its own commit for precise debugging and revertability
+
+**Installation:**
+```bash
+npx get-shit-done-cc
+```
+
+**Target Audience:** Solo or non-technical developers using Claude Code
+
+**Trusted By:** Engineers at Amazon, Google, Shopify, and Webflow
+
+**GitHub:** [glittercowboy/get-shit-done](https://github.com/glittercowboy/get-shit-done) | [GSD 2.0](https://github.com/itsjwill/GSD-2.0-Get-Shit-Done-Cost-saver-)
+
+---
+
+### ContextKit (4-Phase Planning)
+
+A systematic development framework that transforms Claude Code into a **proactive development partner**.
+
+**The 4-Phase Methodology:**
+
+| Phase | Purpose | Details |
+|-------|---------|---------|
+| **1. Define** | What you're building and why | No technical details yet |
+| **2. Plan** | Interactive validation | AI presents understanding for confirmation; clear In Scope/Out of Scope boundaries |
+| **3. Execute** | Supervised autonomy | Requires feature branch + completed planning phases |
+| **4. Quality** | Specialized agents | Accessibility, localization, code cleanup working autonomously |
+
+**Philosophy:**
+- AI becomes a proactive partner that knows what comes next and why
+- Enables AI autonomy at the right moments while keeping you in strategic control
+- Review and approve spec, tech decisions, and implementation plan at key checkpoints
+
+**Configuration:**
+- Sonnet Model Default (sufficient quality with proper guidance)
+- Custom statusline for real-time monitoring
+
+**Built From:** Hundreds of hours developing iOS apps with AI assistants, learning from failures
+
+**GitHub:** [FlineDev/ContextKit](https://github.com/FlineDev/ContextKit)
+
+---
+
+### Superpowers Skills Library
+
+A comprehensive skills library that transforms Claude Code into a **technical collaborator with professional capabilities**.
+
+**How It Works:**
+Skills activate automatically based on context:
+- Writing code → Testing skills ensure TDD
+- Encountering bugs → Debugging skills guide methodical process
+- Starting projects → Collaboration skills structure brainstorming
+
+**Main Skill Categories:**
+
+| Category | Skills | Description |
+|----------|--------|-------------|
+| **Testing** | `test-driven-development` | RED-GREEN-REFACTOR cycle |
+| **Debugging** | `systematic-debugging` | 4-phase root cause process |
+| **Collaboration** | `brainstorming`, `writing-plans`, `executing-plans` | Structured development |
+| **Git** | `using-git-worktrees`, `finishing-a-development-branch` | Workflow management |
+| **Meta** | `writing-skills`, `using-superpowers` | Extending the framework |
+
+**Systematic Debugging Process:**
+1. **Root Cause Investigation**: Trace issue back to origin
+2. **Pattern Analysis**: Check if similar issues exist elsewhere
+3. **Hypothesis Testing**: Form theory and test with evidence
+4. **Implementation**: Apply fix only after cause is understood
+
+**Slash Commands:**
+- `/superpowers:brainstorm` - Interactive design refinement
+- `/superpowers:write-plan` - Create implementation plan
+- `/superpowers:execute-plan` - Execute plan in batches
+
+**Installation:**
+```bash
+/plugin marketplace add obra/superpowers-marketplace
+/plugin install superpowers@superpowers-marketplace
+```
+
+**Requires:** Claude Code 2.0.13+
+
+**GitHub:** [obra/superpowers](https://github.com/obra/superpowers)
+
+---
+
+### Spec-Driven Development Frameworks
+
+#### GitHub Spec Kit
+GitHub's open-source toolkit for spec-driven development:
+- Specification-first approach for AI coding agents
+- Works with GitHub Copilot, Claude Code, Gemini CLI
+- Write clear specifications first, then let AI implement
+
+#### BMAD Method
+Multi-agent methodology with specialized AI personas:
+- Analyst Agent, Product Manager Agent, Developer Agent, etc.
+- Best for complex, multi-repo projects
+- Isolates context for each agent
+
+**When to Use Each:**
+
+| Framework | Best For |
+|-----------|----------|
+| **BMAD** | Large, complex projects; comprehensive documentation; clear role separation |
+| **Spec Kit** | Strict compliance requirements; straightforward architecture |
+| **Claude Code** | Quick bug fixes to building features; TDD; analyzing existing codebases |
+| **GSD** | Solo developers; fast iteration; avoiding enterprise overhead |
+
+**Integration:** Combine for best results—strategic planning (Spec Kit) + agent specialization (BMAD) + persistent memory (MCP) + AI assistance (Claude Code)
+
+---
+
+### Awesome Claude Code Resources
+
+#### Primary Curated Lists
+
+| Repository | Focus | Highlights |
+|------------|-------|------------|
+| [jqueryscript/awesome-claude-code](https://github.com/jqueryscript/awesome-claude-code) | Tools, IDE integrations, frameworks | claude-code (55k⭐), Superpowers (27.9k⭐) |
+| [hesreallyhim/awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code) | Skills, hooks, slash-commands, orchestrators | ContextKit, Trail of Bits Security, Ralph |
+| [ComposioHQ/awesome-claude-skills](https://github.com/ComposioHQ/awesome-claude-skills) | Claude Skills and workflows | Skills, resources, tools |
+| [BehiSecc/awesome-claude-skills](https://github.com/BehiSecc/awesome-claude-skills) | Scientific & full-stack skills | 65 full-stack skills, 125+ scientific skills |
+
+#### Notable Collections
+
+- **claude-skills**: 65 full-stack development skills (React, NestJS, Python, DevOps, 30+ frameworks)
+- **claude-scientific-skills**: 125+ scientific skills (bioinformatics, cheminformatics, clinical research, ML)
+- **Trail of Bits Security Skills**: Professional security-focused skills for code auditing and vulnerability detection
+
+#### Multi-Agent Collections
+
+| Repository | Agents | Description |
+|------------|--------|-------------|
+| [awesome-claude-code-agents](https://github.com/topics/claude-code) | 1.1k⭐ | Claude Code Sub-Agents |
+| [claude-code-unified-agents](https://github.com/topics/claude-code) | 722⭐ | Combined features from multiple repos |
+| [VoltAgent/awesome-claude-code-subagents](https://github.com/topics/claude-code) | 100+ | Specialized AI agents for full-stack |
+| [Agent-Fusion](https://github.com/topics/claude-code) | Multi-tool | Claude Code + Codex CLI + Amazon Q + Gemini collaboration |
+
+#### Web Resources
+
+- **[awesomeclaude.ai](https://awesomeclaude.ai)**: Claude AI Resources Directory
+- **[claudelog.com](https://claudelog.com)**: Docs, Guides, Tutorials & Best Practices
+- **[awesomeclaudeplugins.com](https://awesomeclaudeplugins.com)**: Plugin marketplace
 
 ---
 
@@ -528,6 +703,7 @@ Curated list of:
 
 ## Sources
 
+### Official Anthropic Resources
 - [Claude Code: Best practices for agentic coding](https://www.anthropic.com/engineering/claude-code-best-practices)
 - [Building agents with the Claude Agent SDK](https://www.anthropic.com/engineering/building-agents-with-the-claude-agent-sdk)
 - [How we built our multi-agent research system](https://www.anthropic.com/engineering/multi-agent-research-system)
@@ -537,13 +713,42 @@ Curated list of:
 - [Claude Agent SDK Overview](https://docs.claude.com/en/api/agent-sdk/overview)
 - [Create custom subagents](https://code.claude.com/docs/en/sub-agents)
 - [Slash commands](https://code.claude.com/docs/en/slash-commands)
+- [Extend Claude with skills](https://code.claude.com/docs/en/skills)
 - [RAG for Projects | Claude Help Center](https://support.claude.com/en/articles/11473015-retrieval-augmented-generation-rag-for-projects)
-- [Claude AI Context Window](https://www.datastudios.org/post/claude-ai-context-window-token-limits-and-memory-operational-boundaries-and-long-context-behavior)
-- [Claude Agent: Proven 2025 Playbook](https://binaryverseai.com/claude-agent-sdk-context-engineering-long-memory/)
-- [awesome-claude-code](https://github.com/hesreallyhim/awesome-claude-code)
+- [Ralph Wiggum Plugin (Official)](https://github.com/anthropics/claude-code/tree/main/plugins/ralph-wiggum)
+
+### Frameworks & Tools
+- [Ralph Wiggum - Awesome Claude](https://awesomeclaude.ai/ralph-wiggum)
+- [Ralph for Claude Code](https://github.com/frankbria/ralph-claude-code)
+- [GSD (Get Shit Done)](https://github.com/glittercowboy/get-shit-done)
+- [GSD 2.0](https://github.com/itsjwill/GSD-2.0-Get-Shit-Done-Cost-saver-)
+- [ContextKit](https://github.com/FlineDev/ContextKit)
+- [Superpowers Skills Library](https://github.com/obra/superpowers)
+- [GitHub Spec Kit](https://github.com/github/spec-kit)
 - [Claude Flow](https://github.com/ruvnet/claude-flow)
 - [Model Context Protocol Servers](https://github.com/modelcontextprotocol/servers)
+
+### Curated Lists & Resources
+- [awesome-claude-code (jqueryscript)](https://github.com/jqueryscript/awesome-claude-code)
+- [awesome-claude-code (hesreallyhim)](https://github.com/hesreallyhim/awesome-claude-code)
+- [awesome-claude-skills (ComposioHQ)](https://github.com/ComposioHQ/awesome-claude-skills)
+- [awesome-claude-skills (BehiSecc)](https://github.com/BehiSecc/awesome-claude-skills)
+- [Awesome Claude AI Directory](https://awesomeclaude.ai)
+- [ClaudeLog - Docs & Tutorials](https://claudelog.com)
+- [Awesome Claude Plugins](https://awesomeclaudeplugins.com)
+
+### Context & Memory
+- [Claude AI Context Window](https://www.datastudios.org/post/claude-ai-context-window-token-limits-and-memory-operational-boundaries-and-long-context-behavior)
+- [Claude Agent: Proven 2025 Playbook](https://binaryverseai.com/claude-agent-sdk-context-engineering-long-memory/)
+- [Mastering Claude's Context Window: A 2025 Deep Dive](https://sparkco.ai/blog/mastering-claudes-context-window-a-2025-deep-dive)
+- [Claude's Context Engineering Secrets](https://01.me/en/2025/12/context-engineering-from-claude/)
+
+### Spec-Driven Development
+- [GitHub Spec Kit vs BMAD Comparison](https://medium.com/@visrow/github-spec-kit-vs-bmad-method-a-comprehensive-comparison-part-1-996956a9c653)
+- [Choosing Your AI Coding Framework](https://pradeepbatchu.medium.com/choosing-your-ai-coding-framework-spec-kit-vs-bmad-vs-claude-code-1a8fa261a751)
+- [SDD Framework Comparison](https://redreamality.com/blog/-sddbmad-vs-spec-kit-vs-openspec-vs-promptx/)
 
 ---
 
 *Research compiled: January 2026*
+*Updated with Ralph Wiggum, GSD, ContextKit, Superpowers, and Awesome Claude resources*
